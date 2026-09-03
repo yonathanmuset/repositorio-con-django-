@@ -1,40 +1,137 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% block content %} {% load static %}
 
-{% block content %}
-{% load static %}
-
-<header class="row bg-black">
-    <div class="col-md-4">
-        <img src="{% static 'portfolio/images.jpeg' %}" alt="">
-    </div>
-    <div class="col-md-8 my-auto">
-        <h1> I am <strong>Yonathan Muset</strong></h1>
-        <h3>I am Python Fullstack Depeloper</h3>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti, aperiam unde tempore quis accusamus ea dolorem, sint sit, nemo explicabo aspernatur fugit voluptates? Provident eum iste vel quas, temporibus possimus similique, reiciendis veniam corrupti ducimus odio soluta rerum ratione sint voluptas labore. Beatae voluptate rerum officia, amet vitae quam esse. Libero voluptatum eveniet explicabo velit facilis? Sapiente adipisci, autem necessitatibus ullam voluptatem quis. Eius eveniet dignissimos possimus est, consequuntur ab voluptate blanditiis, beatae, nam nulla non aspernatur odio tempora animi quas fugit. Voluptatem, id. Ratione debitis blanditiis laborum, itaque nemo quaerat voluptate minima expedita quas tempora placeat suscipit iusto. Voluptates.</p>
-        <a href="{% static 'portfolio/cv.docx' %}" class="btn btn-primary btn-lg rounded-0 my-3">Dwonload CV</a>
-    </div>
+<header class="row bg-black text-white p-5">
+  <div class="col-md-4 text-center my-auto">
+    <img
+      src="{% static 'portfolio/yonathan_muset.jpg' %}"
+      alt="Yonathan Muset"
+      class="img-fluid rounded shadow"
+      style="max-height: 300px"
+    />
+  </div>
+  <div class="col-md-8 my-auto">
+    <h1>Hi, I'm <strong>Yonathan Muset</strong></h1>
+    <h3 class="text-primary mb-3">I am Python Fullstack Developer</h3>
+    <p class="text-justify">
+      Soy una persona comprometida y responsable, orientada al aprendizaje
+      continuo y al logro de objetivos en el ámbito laboral. He desarrollado
+      múltiples proyectos personales en los que he implementado sistemas de
+      autenticación, operaciones CRUD y creación de APIs, utilizando tecnologías
+      modernas como FastAPI y Django. Además, cuento con experiencia en el
+      desarrollo de interfaces con React y en el manejo de diversas bases de
+      datos, tales como SQLite, PostgreSQL y MongoDB. Siempre estoy en búsqueda
+      de aprender nuevas herramientas y tecnologías para potenciar mis
+      habilidades y contribuir al éxito de mis proyectos. Optimizo activamente
+      mis flujos de desarrollo e incremento mi rendimiento técnico mediante la
+      integración estratégica de herramientas basadas en Inteligencia
+      Artificial.
+    </p>
+    <p class="small text-muted">
+      📍 Falcón, Venezuela | 📧 Jonathanjmuset@gmail.com | 📱 +58 4125101014
+    </p>
+    <a
+      href="{% static 'portfolio/Yonathan_Muset_CV.pdf' %}"
+      class="btn btn-primary btn-lg rounded-0 my-3"
+      download
+    >
+      Download CV
+    </a>
+  </div>
 </header>
 
-<div class="row my-4 text-center">
-    <h3>My project</h3>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda, voluptatem?</p>
-
-    {% for projects in project %}
-
-    <div class="col-md-4 p-4">
-        <div class="card bg-black card-project">
-            <div class="card-body">
-                <h2>{{projects.title}}</h2>
-<p>{{projects.description}}</p>
-<img src="{{projects.image.url}}" alt="projects.title" class="card-img-top">
-{% if projects.url %}
-<a href="{{projects.url}}" class="btn btn-light rounded-0 btn-sm">projects.url</a>
-{% endif %}
-            </div>
+<!-- SECCIÓN DE HABILIDADES Y NUEVOS CURSOS -->
+<div class="row bg-dark text-white p-5">
+  <div class="col-md-4 mb-4">
+    <h3 class="border-bottom pb-2">🛠️ Habilidades</h3>
+    <ul class="list-unstyled lh-lg">
+      <li><strong>Lenguajes:</strong> Python, JavaScript, HTML, CSS</li>
+      <li><strong>Frameworks:</strong> Django, FastAPI, React</li>
+      <li><strong>Bases de Datos:</strong> PostgreSQL, MongoDB, SQLite</li>
+      <li><strong>Especialidades:</strong> REST APIs, CRUD, Autenticación</li>
+    </ul>
+  </div>
+  <div class="col-md-8">
+    <h3 class="border-bottom pb-2">🎓 Certificaciones Técnicas</h3>
+    <div class="row g-3 text-dark">
+      <div class="col-md-6">
+        <div class="card p-3 h-100 border-0 shadow-sm">
+          <h5>Programación Orientada a Objetos</h5>
+          <small class="text-muted">CFS Francisco de Miranda | 100 Horas</small>
+          <p class="small mt-2 mb-0">
+            Modelado lógico mediante paradigmas POO, desarrollo ágil de
+            componentes de software y modularidad limpia.
+          </p>
         </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-3 h-100 border-0 shadow-sm">
+          <h5>Lógica de Programación</h5>
+          <small class="text-muted">CFS Francisco de Miranda | 60 Horas</small>
+          <p class="small mt-2 mb-0">
+            Estructuras algorítmicas complejas, optimización del pensamiento
+            analítico y resolución de problemas lógicos aplicados.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 mt-3">
+        <div class="card p-3 h-100 border-0 shadow-sm">
+          <h5>Arquitectura del Computador</h5>
+          <small class="text-muted">CFS Francisco de Miranda | 100 Horas</small>
+          <p class="small mt-2 mb-0">
+            Diagnóstico de componentes electrónicos, mantenimiento preventivo de
+            hardware y ensamblaje de sistemas lógicos.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 mt-3">
+        <div class="card p-3 h-100 border-0 shadow-sm">
+          <h5>Matemática Básica</h5>
+          <small class="text-muted">CFS Francisco de Miranda | 60 Horas</small>
+          <p class="small mt-2 mb-0">
+            Fundamentos numéricos y razonamiento algebraico aplicados a la
+            modelación de algoritmos computacionales.
+          </p>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-{% endfor %}
+<!-- SECCIÓN DE PROYECTOS -->
+<div class="row my-4 text-center">
+  <h3 class="w-100">My project</h3>
+  <p class="w-100 text-muted">
+    Galería automatizada de aplicaciones web, servicios backend y desarrollo
+    experimental.
+  </p>
+
+  {% for projects in project %}
+  <div class="col-md-4 p-4">
+    <div class="card bg-black card-project text-white border-secondary h-100">
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h2>{{ projects.title }}</h2>
+          <p class="text-muted">{{ projects.description }}</p>
+        </div>
+        <div>
+          <img
+            src="{{ projects.image.url }}"
+            alt="{{ projects.title }}"
+            class="card-img-top my-3"
+          />
+          {% if projects.url %}
+          <a
+            href="{{ projects.url }}"
+            class="btn btn-light rounded-0 btn-sm w-100"
+            target="_blank"
+            >View Project</a
+          >
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 
 {% endblock %}
-</div>
