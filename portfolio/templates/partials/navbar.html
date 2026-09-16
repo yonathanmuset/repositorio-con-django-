@@ -14,12 +14,14 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center text-lg-start">
+        <!-- Enlace al Blog -->
         <li class="nav-item">
           <a class="nav-link" href="{% url 'blog:posts' %}">Blog</a>
         </li>
-        <li class="nav-item d-flex align-items-center">
-          <!-- Botón Superior Corregido en el archivo real navbar.html -->
+
+        <!-- Botón de Descarga (Corregido para verse en móviles) -->
+        <li class="nav-item mt-2 mt-lg-0 ms-lg-3">
           <a
             class="btn btn-primary btn-sm"
             href="{% static 'portfolio/CV_Yonathan_Muset_Comercial.pdf' %}"
@@ -27,12 +29,6 @@
           >
             Download CV
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
         </li>
       </ul>
     </div>
