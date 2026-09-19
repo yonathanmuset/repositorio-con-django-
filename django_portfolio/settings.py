@@ -31,6 +31,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    
+    # Librerías para guardar imágenes en la nube
+    "cloudinary_storage",
+    "cloudinary",
+    
+    # Tus aplicaciones
     "blog",
     "portfolio",
 ]
