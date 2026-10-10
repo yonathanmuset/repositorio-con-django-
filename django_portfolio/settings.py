@@ -17,18 +17,29 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-DEBUG = os.environ.get("DEBUG", "False").strip().lower() in {"1", "true", "yes"}
+render_hostname = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
+DATABASE_URL = os.environ.get("DATABASE_URL")
+debug_setting = os.environ.get("DEBUG")
+if debug_setting is None:
+    DEBUG = not bool(render_hostname or DATABASE_URL)
+else:
+    debug_setting = debug_setting.strip().lower()
+    if debug_setting not in {"1", "true", "yes", "0", "false", "no"}:
+        raise ImproperlyConfigured("DEBUG must be set to True or False.")
+    DEBUG = debug_setting in {"1", "true", "yes"}
 
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 if not SECRET_KEY:
-    raise ImproperlyConfigured("Set DJANGO_SECRET_KEY in the environment.")
+    if DEBUG:
+        SECRET_KEY = "django-insecure-local-development-key-not-for-deployment"
+    else:
+        raise ImproperlyConfigured("Set DJANGO_SECRET_KEY in the environment.")
 
 ALLOWED_HOSTS = [
     host.strip()
     for host in os.environ.get("ALLOWED_HOSTS", "").split(",")
     if host.strip()
 ]
-render_hostname = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
 if render_hostname:
     ALLOWED_HOSTS.append(render_hostname)
 if DEBUG:
@@ -68,10 +79,30 @@ CLOUDINARY_STORAGE = {
     "API_KEY": os.environ.get("API_KEY") or _cloudinary_config.api_key,
     "API_SECRET": os.environ.get("API_SECRET") or _cloudinary_config.api_secret,
 }
+cloudinary_credentials = tuple(CLOUDINARY_STORAGE.values())
+if any(cloudinary_credentials) and not all(cloudinary_credentials):
+    raise ImproperlyConfigured(
+        "Set CLOUDINARY_URL or all of CLOUD_NAME, API_KEY, and API_SECRET."
+    )
+CLOUDINARY_ENABLED = all(cloudinary_credentials)
+if not CLOUDINARY_ENABLED and not DEBUG:
+    raise ImproperlyConfigured(
+        "Set CLOUDINARY_URL in production to store uploaded images persistently."
+    )
+if CLOUDINARY_ENABLED:
+    cloudinary.config(
+        cloud_name=CLOUDINARY_STORAGE["CLOUD_NAME"],
+        api_key=CLOUDINARY_STORAGE["API_KEY"],
+        api_secret=CLOUDINARY_STORAGE["API_SECRET"],
+    )
 
 STORAGES = {
     "default": {
-        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+        "BACKEND": (
+            "cloudinary_storage.storage.MediaCloudinaryStorage"
+            if CLOUDINARY_ENABLED
+            else "django.core.files.storage.FileSystemStorage"
+        ),
     },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
@@ -126,7 +157,6 @@ WSGI_APPLICATION = "django_portfolio.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASE_URL = os.environ.get("DATABASE_URL")
 if DATABASE_URL:
     database_url = urlsplit(DATABASE_URL)
     if database_url.scheme not in {"postgres", "postgresql"}:
@@ -148,17 +178,13 @@ if DATABASE_URL:
             "CONN_HEALTH_CHECKS": True,
         }
     }
-elif DEBUG:
+else:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
             "NAME": BASE_DIR / "db.sqlite3",
         }
     }
-else:
-    raise ImproperlyConfigured("Set DATABASE_URL to a production PostgreSQL database.")
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
