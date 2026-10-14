@@ -1,13 +1,17 @@
 {% extends "layout.html" %}
 {% block content %}
-
-<div class="text-center">
-    <h2>{{post.title}}</h2>
-<h3 class="my-2 h5 text-muted">{{post.date|date:"F JS Y"}}</h3>
-
-<div class="my-4">
-    <p>{{post.description|safe}}</p>
-</div>
-<img src="{{post.image.url}}" alt="{{post.title}}" class="img-fluid">
-</div>
+<section class="blog post-detail">
+    <div class="container-narrow">
+        <article class="post-article">
+            <a href="{% url 'blog:posts' %}" class="blog-read-more">Volver a publicaciones</a>
+            <span class="section-label">Blog</span>
+            <h1 class="section-title">{{ post.title }}</h1>
+            <time class="post-date" datetime="{{ post.date|date:'Y-m-d' }}">{{ post.date|date:"d M Y" }}</time>
+            <div class="post-content">{{ post.description|safe }}</div>
+            {% if post.image %}
+            <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-detail-image" loading="lazy">
+            {% endif %}
+        </article>
+    </div>
+</section>
 {% endblock %}

@@ -4,7 +4,7 @@ from .models import Post
 
 # Create your views here.
 def render_posts(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by("-date", "-pk")
     return render(request, "posts.html", {"posts": posts})
 
 

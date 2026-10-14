@@ -1,135 +1,243 @@
-{% extends "layout.html" %} {% block content %} {% load static %}
+{% extends "layout.html" %}
+{% load static %}
 
-<header class="row bg-black text-white p-5">
-  <div class="col-md-4 text-center my-auto">
-    <img
-      src="{% static 'portfolio/yonathan_muset.jpg' %}"
-      alt="Yonathan Muset"
-      class="img-fluid rounded shadow"
-      style="max-height: 300px"
-    />
-  </div>
-  <div class="col-md-8 my-auto">
-    <h1>Hi, I'm <strong>Yonathan Muset</strong></h1>
-    <h3 class="text-primary mb-3">I am Python Fullstack Developer</h3>
-    <p class="text-justify">
-      Soy desarrollador web enfocado en el desarrolo backend con sólida
-      experiencia autónoma en la arquitectura de servicios web y APIs.
-      Especializado en el diseño de operaciones CRUD, flujos de autenticación
-      seguros y optimización de bases de datos relacionales y no relacionales.
-      Actualmente expandiendo competencias mediante el estudio y asimilación de
-      tecnologías basadas en Inteligencia Artificial (IA), integrando
-      herramientas avanzadas para la optimización de flujos de trabajo,
-      automatización de pruebas lógicas y refinamiento de la estructura del
-      código, garantizando un rendimiento óptimo en la entrega de soluciones
-      escalables
-    </p>
-    <p class="small text-muted">
-      📍 Falcón, Venezuela | 📧 Jonathanjmuset@gmail.com | 📱 +58 4125101014
-    </p>
-    <a
-      href="{% static 'portfolio/Yonathan_Muset_CV.docx' %}"
-      class="btn btn-primary btn-lg rounded-0 my-3"
-      download
-    >
-      Download CV
-    </a>
-  </div>
-</header>
+{% block content %}
+    <section class="hero" id="home">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-blob-1" aria-hidden="true"></div>
+        <div class="hero-blob-2" aria-hidden="true"></div>
 
-<!-- SECCIÓN DE HABILIDADES Y NUEVOS CURSOS -->
-<div class="row bg-dark text-white p-5">
-  <div class="col-md-4 mb-4">
-    <h3 class="border-bottom pb-2">🛠️ Habilidades</h3>
-    <ul class="list-unstyled lh-lg">
-      <li><strong>Lenguajes:</strong> Python, JavaScript, HTML, CSS</li>
-      <li><strong>Frameworks:</strong> Django, FastAPI, React</li>
-      <li><strong>Bases de Datos:</strong> PostgreSQL, MongoDB, SQLite</li>
-      <li><strong>Especialidades:</strong> REST APIs, CRUD, Autenticación</li>
-    </ul>
-  </div>
-  <div class="col-md-8">
-    <h3 class="border-bottom pb-2">🎓 Certificaciones Técnicas</h3>
-    <div class="row g-3 text-dark">
-      <div class="col-md-6">
-        <div class="card p-3 h-100 border-0 shadow-sm">
-          <h5>Programación Orientada a Objetos</h5>
-          <small class="text-muted">CFS Francisco de Miranda | 100 Horas</small>
-          <p class="small mt-2 mb-0">
-            Modelado lógico mediante paradigmas POO, desarrollo ágil de
-            componentes de software y modularidad limpia.
-          </p>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="status-dot" aria-hidden="true"></span>
+                Portafolio de desarrollo web
+            </div>
+            <h1>Yonathan <span class="accent">Muset</span></h1>
+            <p class="hero-role">Desarrollador Backend Python &amp; Django</p>
+            <p class="hero-desc">
+                Desarrollo aplicaciones web, servicios backend y APIs. Explora mis
+                proyectos, conoce mi experiencia y ponte en contacto.
+            </p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn-primary" onclick="scrollToSection('projects'); return false;">
+                    Ver proyectos
+                </a>
+                <a href="#contact" class="btn-secondary" onclick="scrollToSection('contact'); return false;">
+                    Contactarme
+                </a>
+            </div>
+            <div class="hero-socials">
+                <a href="https://github.com/yonathanmuset/repositorio-con-django-" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945 0 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+                <a href="mailto:Jonathanjmuset@gmail.com" class="social-icon" aria-label="Enviar correo">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </a>
+            </div>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card p-3 h-100 border-0 shadow-sm">
-          <h5>Lógica de Programación</h5>
-          <small class="text-muted">CFS Francisco de Miranda | 60 Horas</small>
-          <p class="small mt-2 mb-0">
-            Estructuras algorítmicas complejas, optimización del pensamiento
-            analítico y resolución de problemas lógicos aplicados.
-          </p>
-        </div>
-      </div>
-      <div class="col-md-6 mt-3">
-        <div class="card p-3 h-100 border-0 shadow-sm">
-          <h5>Arquitectura del Computador</h5>
-          <small class="text-muted">CFS Francisco de Miranda | 100 Horas</small>
-          <p class="small mt-2 mb-0">
-            Diagnóstico de componentes electrónicos, mantenimiento preventivo de
-            hardware y ensamblaje de sistemas lógicos.
-          </p>
-        </div>
-      </div>
-      <div class="col-md-6 mt-3">
-        <div class="card p-3 h-100 border-0 shadow-sm">
-          <h5>Matemática Básica</h5>
-          <small class="text-muted">CFS Francisco de Miranda | 60 Horas</small>
-          <p class="small mt-2 mb-0">
-            Fundamentos numéricos y razonamiento algebraico aplicados a la
-            modelación de algoritmos computacionales.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+        <a href="#about" class="hero-scroll" aria-label="Desplazarse a Sobre mí" onclick="scrollToSection('about'); return false;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+    </section>
 
-<!-- SECCIÓN DE PROYECTOS -->
-<div class="row my-4 text-center">
-  <h3 class="w-100">My project</h3>
-  <p class="w-100 text-muted">
-    Galería automatizada de aplicaciones web, servicios backend y desarrollo
-    experimental.
-  </p>
+    <section class="about" id="about">
+        <div class="container reveal">
+            <div class="text-center section-heading">
+                <span class="section-label">Sobre mí</span>
+                <h2 class="section-title">Experiencia y habilidades</h2>
+                <div class="section-divider"></div>
+            </div>
 
-  {% for projects in project %}
-  <div class="col-md-4 p-4">
-    <div class="card bg-black card-project text-white border-secondary h-100">
-      <div class="card-body d-flex flex-column justify-content-between">
-        <div>
-          <h2>{{ projects.title }}</h2>
-          <p class="text-muted">{{ projects.description }}</p>
-        </div>
-        <div>
-          <img
-            src="{{ projects.image.url }}"
-            alt="{{ projects.title }}"
-            class="card-img-top my-3"
-          />
-          {% if projects.url %}
-          <a
-            href="{{ projects.url }}"
-            class="btn btn-light rounded-0 btn-sm w-100"
-            target="_blank"
-            >View Project</a
-          >
-          {% endif %}
-        </div>
-      </div>
-    </div>
-  </div>
-  {% endfor %}
-</div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        Soy desarrollador web enfocado en el <span class="highlight">desarrollo backend</span>,
+                        con experiencia en arquitectura de servicios web y APIs. Me especializo en operaciones
+                        CRUD, autenticación y bases de datos relacionales y no relacionales.
+                    </p>
+                    <p>
+                        Actualmente sigo ampliando mis conocimientos en inteligencia artificial y en herramientas
+                        que ayudan a optimizar flujos de trabajo, automatizar pruebas y construir soluciones
+                        mantenibles.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <div class="stat-value">{{ projects|length }}</div>
+                            <div class="stat-label">Proyectos</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">{{ blog_posts_count }}</div>
+                            <div class="stat-label">Artículos</div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="about-skills">
+                    <div class="skill-item">
+                        <h3 class="skill-name">Lenguajes</h3>
+                        <p class="skill-detail">Python, JavaScript, HTML y CSS</p>
+                    </div>
+                    <div class="skill-item">
+                        <h3 class="skill-name">Frameworks</h3>
+                        <p class="skill-detail">Django, FastAPI y React</p>
+                    </div>
+                    <div class="skill-item">
+                        <h3 class="skill-name">Bases de datos</h3>
+                        <p class="skill-detail">PostgreSQL, MongoDB y SQLite</p>
+                    </div>
+                    <div class="skill-item">
+                        <h3 class="skill-name">Especialidades</h3>
+                        <p class="skill-detail">APIs REST, CRUD y autenticación</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="certifications">
+                <h3 class="certifications-title">Formación técnica</h3>
+                <div class="certifications-grid">
+                    <article class="certification-card">
+                        <h4>Programación Orientada a Objetos</h4>
+                        <p>CFS Francisco de Miranda <span>· 100 horas</span></p>
+                    </article>
+                    <article class="certification-card">
+                        <h4>Lógica de Programación</h4>
+                        <p>CFS Francisco de Miranda <span>· 60 horas</span></p>
+                    </article>
+                    <article class="certification-card">
+                        <h4>Arquitectura del Computador</h4>
+                        <p>CFS Francisco de Miranda <span>· 100 horas</span></p>
+                    </article>
+                    <article class="certification-card">
+                        <h4>Matemática Básica</h4>
+                        <p>CFS Francisco de Miranda <span>· 60 horas</span></p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <div class="container reveal">
+            <div class="text-center section-heading">
+                <span class="section-label section-label-cyan">Portafolio</span>
+                <h2 class="section-title">Mis proyectos</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">
+                    Una selección de aplicaciones web, servicios backend y proyectos experimentales.
+                </p>
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+                {% for project in projects %}
+                <article class="project-card">
+                    <div class="project-img-wrap">
+                        {% if project.image %}
+                            <img src="{{ project.image.url }}" alt="Imagen del proyecto {{ project.title }}" loading="lazy">
+                        {% else %}
+                            <div class="project-image-placeholder" aria-hidden="true">Proyecto</div>
+                        {% endif %}
+                        <div class="project-img-overlay" aria-hidden="true"></div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-heading">
+                            <h3 class="project-title">{{ project.title }}</h3>
+                            {% if project.url %}
+                            <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Visitar {{ project.title }}">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            </a>
+                            {% endif %}
+                        </div>
+                        <p class="project-desc">{{ project.description }}</p>
+                    </div>
+                </article>
+                {% empty %}
+                <p class="empty-state">Aún no hay proyectos publicados.</p>
+                {% endfor %}
+            </div>
+
+            <div class="projects-footer">
+                <a href="https://github.com/yonathanmuset/repositorio-con-django-" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                    Ver proyectos en GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="blog" id="blog">
+        <div class="container reveal">
+            <div class="text-center section-heading">
+                <span class="section-label">Blog</span>
+                <h2 class="section-title">Últimas publicaciones</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">
+                    Artículos y notas sobre desarrollo web, programación y tecnología.
+                </p>
+            </div>
+
+            <div class="blog-grid">
+                {% for post in blog_posts %}
+                <article class="blog-card">
+                    <div class="blog-card-header">
+                        <span class="blog-tag">Artículo</span>
+                        <time class="blog-meta" datetime="{{ post.date|date:'Y-m-d' }}">{{ post.date|date:"d M Y" }}</time>
+                    </div>
+                    <h3 class="blog-title">{{ post.title }}</h3>
+                    <p class="blog-excerpt">{{ post.description|striptags|truncatewords:30 }}</p>
+                    <a href="{% url 'blog:post_detail' post.pk %}" class="blog-read-more">
+                        Leer artículo
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                </article>
+                {% empty %}
+                <p class="empty-state">Aún no hay publicaciones.</p>
+                {% endfor %}
+            </div>
+            {% if blog_posts_count %}
+            <div class="projects-footer">
+                <a href="{% url 'blog:posts' %}" class="btn-secondary">Ver todas las publicaciones</a>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-glow" aria-hidden="true"></div>
+        <div class="container-narrow reveal">
+            <div class="text-center section-heading">
+                <span class="section-label section-label-cyan">Contacto</span>
+                <h2 class="section-title">Hablemos</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">
+                    ¿Tienes una propuesta o una pregunta? Puedes escribirme o descargar mi CV.
+                </p>
+            </div>
+
+            <div class="contact-grid">
+                <a href="{% static 'portfolio/Yonathan_Muset_CV.docx' %}" download class="contact-card">
+                    <div class="contact-icon-wrap icon-blue">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    </div>
+                    <h3>Descargar CV</h3>
+                    <p>Descarga mi currículum en formato Word.</p>
+                    <span class="contact-action action-blue">Descargar archivo</span>
+                </a>
+                <a href="https://wa.me/584125101014" target="_blank" rel="noopener noreferrer" class="contact-card whatsapp">
+                    <div class="contact-icon-wrap icon-green">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    </div>
+                    <h3>WhatsApp</h3>
+                    <p>Escríbeme directamente al +58 412-5101014.</p>
+                    <span class="contact-action action-green">Enviar mensaje</span>
+                </a>
+                <a href="mailto:Jonathanjmuset@gmail.com" class="contact-card">
+                    <div class="contact-icon-wrap icon-blue">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <h3>Correo electrónico</h3>
+                    <p>Jonathanjmuset@gmail.com</p>
+                    <span class="contact-action action-blue">Enviar correo</span>
+                </a>
+            </div>
+        </div>
+    </section>
 {% endblock %}
